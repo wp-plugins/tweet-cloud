@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Tweet Cloud
-Plugin URI: http://stephenmcintyre.net
+Plugin URI: http://dev.stephenmcintyre.net/tweet-cloud
 Description: Takes latest Twitter updates and aggregates them into a cloud for sidebar or otherwise.
 Author: Stephen McIntyre
 Version: 1.0
