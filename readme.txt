@@ -15,7 +15,7 @@ Cloud of popular words and phrases from a user's Twitter profile. Instead of usi
 == Installation ==
 1. Upload `sm-tweet-cloud.php` into the `/wp-content/plugins/` directory.
 2. Activate `Tweet Cloud` from the `Plugins` menu in the `Admin Control Panel`.
-3. Copy and paste one of the code examples below into any php page on your site.
+3. Copy and paste one of the code examples in the `Code` section in `Other Notes` into any php page on your site.
 4. Enjoy :)
 
 == Code ==
@@ -43,9 +43,9 @@ USERID (remember to enclose in quotations "")
 
 To get this:
 
-1. Go to your Twitter proflie (http://twitter.com/USERNAME)
-2. Click "RSS feed of USERNAME's updates" (orange icon below Following)
-3. Copy number from URL (USERID from http://twitter.com/statuses/user_timeline/USERID.rss)
+1. Go to your Twitter proflie (`http://twitter.com/USERNAME`)
+2. Click `RSS feed of USERNAME's updates` (orange icon below Following)
+3. Copy number from URL (USERID from `http://twitter.com/statuses/user_timeline/USERID.rss`)
 
 WORDLIMIT (can only be a number, don't enclose in quotations)
 
