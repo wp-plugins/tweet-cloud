@@ -4,7 +4,7 @@ Donate link: http://dev.stephenmcintyre.net/tweet-cloud
 Tags: tweet, cloud, twitter
 Requires at least: 1.0
 Tested up to: 2.7
-Stable tag: 1.0
+Stable tag: 1.1
 
 Cloud of popular words and phrases from a user's Twitter profile.
 
@@ -65,3 +65,11 @@ default = 3
 == Frequently Asked Questions ==
 
 To ask a question or give feedback, send an email to emailme@stephenmcintyre.net
+
+== Release Notes ==
+
+1.1
+
+* Displays words in most common case format (i.e. WordPress instead of wordpress)
+* cURL used for feed access instead of relying on allow_url_fopen being on
+* Improved error handling including newly added user name check
