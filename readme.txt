@@ -71,5 +71,5 @@ To ask a question or give feedback, send an email to emailme@stephenmcintyre.net
 1.1
 
 * Displays words in most common case format (i.e. WordPress instead of wordpress)
-* cURL used for feed access instead of relying on allow_url_fopen being on
+* cURL used for feed access instead of relying on `allow_url_fopen` being on
 * Improved error handling including newly added user name check
