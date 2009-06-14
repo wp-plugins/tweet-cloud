@@ -4,7 +4,7 @@ Plugin Name: Tweet Cloud
 Plugin URI: http://dev.stephenmcintyre.net/tweet-cloud
 Description: Takes latest Twitter updates and aggregates them into a cloud for sidebar or otherwise.
 Author: Stephen McIntyre
-Version: 1.1
+Version: 1.2
 Author URI: http://stephenmcintyre.net
 
 	Copyright (c) 2009 Stephen McIntyre (http://stephenmcintyre.net)
@@ -13,7 +13,7 @@ Author URI: http://stephenmcintyre.net
 
 */
 
-function sm_tweet_cloud($username = NULL, $userid = NULL, $wordlimit = 20, $minchar = 3) {
+function sm_tweet_cloud($username = NULL, $userid = NULL, $wordlimit = 20, $minchar = 3, $wordlinks = true) {
 	
 	echo "\n".'<!--Tweet Cloud by Stephen McIntyre of http://stephenmcintyre.net-->'."\n";
 	echo '<div class="sm-tweet-cloud">'."\n";
@@ -68,7 +68,7 @@ function sm_tweet_cloud($username = NULL, $userid = NULL, $wordlimit = 20, $minc
 		}
 		return $new_string;
 	}
-	
+		
 	foreach($tw->channel->item as $item) {
 		$pot .= substr($item->title, strlen($username . ': '), strlen($item->title)) . ' ';
 	}
@@ -104,9 +104,12 @@ function sm_tweet_cloud($username = NULL, $userid = NULL, $wordlimit = 20, $minc
 		arsort($db['words'][$dbk], SORT_NUMERIC);
 		array_splice($db['words'][$dbk], 1);
 		$text = key($db['words'][$dbk]);
-		echo '<span style="font-size:' . ($dbv / 2) . 'em;">' . sm_tweet_cloud_ascii($text) . '</span>'."\n";
+		if($wordlinks) echo '<a href="http://search.twitter.com/search?from=' . $username . '&amp;ands=' . urlencode($text) . '">';
+		echo '<span style="font-size:' . ($dbv / 2) . 'em;">' . sm_tweet_cloud_ascii($text) . '</span>';
+		if($wordlinks) echo '</a>' . "\n";
 	}
 	
+	echo '</div>'."\n";
 }
 
 function sm_tweet_link($username = NULL) {
@@ -114,7 +117,7 @@ function sm_tweet_link($username = NULL) {
 		sm_tweet_cloud_error('Expects user name.');
 		return;
 	} else {
-		echo '<a href="http://twitter.com/' . $username . '">' . sm_tweet_cloud_ascii('@' . $username) . '</a>';
+		echo '<a href="http://twitter.com/' . $username . '">' . sm_tweet_cloud_ascii('@' . $username) . '</a>'."\n";
 	}
 }
 
