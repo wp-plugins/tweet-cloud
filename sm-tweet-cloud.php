@@ -4,7 +4,7 @@ Plugin Name: Tweet Cloud
 Plugin URI: http://dev.stephenmcintyre.net/tweet-cloud
 Description: Takes latest Twitter updates and aggregates them into a cloud for sidebar or otherwise.
 Author: Stephen McIntyre
-Version: 1.2
+Version: 1.3
 Author URI: http://stephenmcintyre.net
 
 	Copyright (c) 2009 Stephen McIntyre (http://stephenmcintyre.net)
@@ -13,7 +13,7 @@ Author URI: http://stephenmcintyre.net
 
 */
 
-function sm_tweet_cloud($username = NULL, $userid = NULL, $wordlimit = 20, $minchar = 3, $wordlinks = true) {
+function sm_tweet_cloud($username = NULL, $wordlimit = 20, $minchar = 3, $wordlinks = true) {
 	
 	echo "\n".'<!--Tweet Cloud by Stephen McIntyre of http://stephenmcintyre.net-->'."\n";
 	echo '<div class="sm-tweet-cloud">'."\n";
@@ -22,17 +22,17 @@ function sm_tweet_cloud($username = NULL, $userid = NULL, $wordlimit = 20, $minc
 		echo 'Tweet Cloud: ' . $string;
 	}
 	
-	if($username == NULL || $userid == NULL) {
-		sm_tweet_cloud_error('Needs at least a name and ID.');
+	if($username == NULL) {
+		sm_tweet_cloud_error('Needs a user name.');
 		return;
 	}
 	
 	if(!is_int($wordlimit) || !is_int($minchar)) {
-		sm_tweet_cloud_error('Params 3 and 4 must be numbers.');
+		sm_tweet_cloud_error('Params 2 and 3 must be numbers.');
 		return;
 	}
 	
-	$twurl = 'http://twitter.com/statuses/user_timeline/' . $userid . '.rss';
+	$twurl = 'http://search.twitter.com/search.json?rpp=20&from=' . $username;
 	
 	$curl = curl_init();
 	curl_setopt($curl, CURLOPT_URL, $twurl);
@@ -40,13 +40,13 @@ function sm_tweet_cloud($username = NULL, $userid = NULL, $wordlimit = 20, $minc
 	$feed = curl_exec($curl);
 	curl_close($curl);
 	
-	if(!($tw = @simplexml_load_string($feed))) {
+	if(!($tw = @json_decode($feed))) {
 		sm_tweet_cloud_error('Could not retrieve Twitter data.');
 		return;
 	}
 	
-	if(substr($tw->channel->item[0]->title, 0, strlen($username)) != $username) {
-		sm_tweet_cloud_error('Incorrect user name / ID combination.');
+	if($tw->max_id == -1) {
+		sm_tweet_cloud_error('Incorrect username.');
 		return;
 	}
 	
@@ -69,8 +69,8 @@ function sm_tweet_cloud($username = NULL, $userid = NULL, $wordlimit = 20, $minc
 		return $new_string;
 	}
 		
-	foreach($tw->channel->item as $item) {
-		$pot .= substr($item->title, strlen($username . ': '), strlen($item->title)) . ' ';
+	foreach($tw->results as $item) {
+		$pot .= $item->text . ' ';
 	}
 	$words = explode(' ', $pot);
 	
@@ -121,12 +121,12 @@ function sm_tweet_link($username = NULL) {
 	}
 }
 
-function sm_tweet_widget($username = NULL, $userid = NULL, $wordlimit = 20, $minchar = 3) {
+function sm_tweet_widget($username = NULL, $wordlimit = 20, $minchar = 3, $wordlinks = true) {
 ?>
 	<li><h2>Tweet Cloud</h2>
     	<ul>
             <li>
-            <?php sm_tweet_cloud($username, $userid, $wordlimit, $minchar) ?>
+            <?php sm_tweet_cloud($username, $wordlimit, $minchar, $wordlinks = true) ?>
             </li>
             <li><?php sm_tweet_link($username) ?></li>
         </ul>
