@@ -16,7 +16,7 @@ Cloud of popular words and phrases from a user's Twitter profile. Instead of usi
 1. Upload `sm-tweet-cloud.php` into the `wp-content/plugins/` directory.
 2. Activate `Tweet Cloud` from the `Plugins` menu in the `Admin Control Panel`.
 3. Copy and paste one of the code examples in the `Code` section in `Other Notes` into any PHP page on your site.
-4. Enjoy :)
+4. Enjoy :) 
 
 == Code ==
 

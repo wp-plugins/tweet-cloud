@@ -156,7 +156,7 @@ function sm_tweet_widget( $username = NULL, $wordlimit = 20, $wordlinks = true, 
             <li><?php sm_tweet_link( $username ) ?></li>
         </ul>
     </li>
-<?php
+<?php 
 }
 
 function sm_tweet_cloud_error( $string ){
