@@ -3,8 +3,8 @@ Contributors: Stephen McIntyre
 Donate link: http://dev.stephenmcintyre.net/tweet-cloud
 Tags: tweet, cloud, twitter
 Requires at least: 1.0
-Tested up to: 2.9.1
-Stable tag: 1.4
+Tested up to: 2.8
+Stable tag: 1.3
 
 Cloud of popular words and phrases from a user's Twitter profile.
 
@@ -22,7 +22,7 @@ Cloud of popular words and phrases from a user's Twitter profile. Instead of usi
 
 Tweet Cloud
 
-`<?php sm_tweet_cloud("USERNAME", WORDLIMIT, WORDLINKS, REMOVE_TYPES, EXCLUDES) ?>`
+`<?php sm_tweet_cloud("USERNAME", WORDLIMIT, MINCHAR, WORDLINKS, RESULTS) ?>`
 
 Profile Link
 
@@ -32,7 +32,7 @@ Sidebar Widget
 
 Copy and paste this into `sidebar.php` after a `</li>` tag or the first `<ul>` tag
 
-`<?php sm_tweet_widget("USERNAME", WORDLIMIT, WORDLINKS, REMOVE_TYPES) ?>`
+`<?php sm_tweet_widget("USERNAME", WORDLIMIT, MINCHAR, WORDLINKS, RESULTS) ?>`
 
 == Parameters ==
 
@@ -46,7 +46,7 @@ The amount of words displayed in the Cloud
 
 default = 20
 
-MINCHAR (can only be a number, don't enclose in quotations) [deprecated - use EXCLUDES]
+MINCHAR (can only be a number, don't enclose in quotations)
 
 Filters words to this set minimum amount of characters so they won't be counted and listed
 
@@ -58,18 +58,6 @@ Sets whether words display as links in the cloud (on = true, off = false)
 
 default = true
 
-REMOVE_TYPES (can include any or all of '@', '#', and 'RT')
-
-Doesn't count tweets beginning with @, #, or RT respectively
-
-default = array()
-
-EXCLUDES
-
-Array of common words to exclude from cloud
-
-default = array('a','an','and','are','as','at','be','but','by','can','can\'t','do','does','don\'t','for','from','get','have','he','her','his','i','i\'m','in','is','it','me','my','not','of','on','one','or','say','she','that','the','their','they','this','to','we','will','won\'t','with','you')
-
 == Screenshots ==
 1. screenshot-1.png
 2. screenshot-2.png
@@ -79,12 +67,6 @@ default = array('a','an','and','are','as','at','be','but','by','can','can\'t','d
 To ask a question or give feedback, send an email to emailme@stephenmcintyre.net
 
 == Release Notes ==
-
-1.4
-
-* Type modifying paramater to remove different tweet types
-* List of exclusions added to filter out common words (deprecates $minchar)
-* Saves data to local file to prevent unnecessary Twitter search calls
 
 1.3
 
