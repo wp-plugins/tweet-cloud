@@ -44,12 +44,12 @@ function sm_tweet_cloud(
 	$txt_name = '/sm-tweet-cloud-data.txt';
 	
 	$txt_curl = curl_init();
-	curl_setopt( $txt_curl, CURLOPT_URL, 'http://localhost/' . PLUGINDIR . $txt_name );
+	curl_setopt( $txt_curl, CURLOPT_URL, WP_PLUGIN_URL . $txt_name );
 	curl_setopt( $txt_curl, CURLOPT_RETURNTRANSFER, true );
 	curl_setopt( $txt_curl, CURLOPT_FILETIME, true );
 	$txt_file = curl_exec( $txt_curl );
 	$txt_modtime = curl_getinfo( $txt_curl, CURLINFO_FILETIME );
-	curl_close( $txt_curl);
+	curl_close( $txt_curl );
 	
 	if( date( 'd m y', $txt_modtime ) != date( 'd m y' ) ){
 		
