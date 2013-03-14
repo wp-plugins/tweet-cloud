@@ -1,10 +1,10 @@
 === Tweet Cloud ===
 Contributors: Stephen McIntyre
-Donate link: http://dev.stephenmcintyre.net/tweet-cloud
+Donate link: http://stevedecoded.com/apps/tweet-cloud
 Tags: tweet, cloud, twitter
 Requires at least: 1.0
 Tested up to: 2.9.1
-Stable tag: 1.4
+Stable tag: 1.5
 
 Cloud of popular words and phrases from a user's Twitter profile.
 
@@ -76,9 +76,13 @@ default = array('a','an','and','are','as','at','be','but','by','can','can\'t','d
 
 == Frequently Asked Questions ==
 
-To ask a question or give feedback, send an email to emailme@stephenmcintyre.net
+To ask a question or give feedback, send an email to steve@stevedecoded.com
 
 == Release Notes ==
+
+1.5
+
+* Changed URL references to new site
 
 1.4
 

@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: Tweet Cloud
-Plugin URI: http://dev.stephenmcintyre.net/tweet-cloud
+Plugin URI: http://stevedecoded.com/apps/tweet-cloud
 Description: Takes latest Twitter updates and aggregates them into a cloud for sidebar or otherwise.
 Author: Stephen McIntyre
-Version: 1.4
-Author URI: http://stephenmcintyre.net
+Version: 1.5
+Author URI: http://stevedecoded.com
 
-	Copyright (c) 2009 Stephen McIntyre (http://stephenmcintyre.net)
+	Copyright (c) 2009 Stephen McIntyre (http://stevedecoded.com)
 	Tweet Cloud is released under the GNU General Public License (GPL)
 	http://www.gnu.org/licenses/gpl.txt
 
@@ -33,7 +33,7 @@ function sm_tweet_cloud(
 		}
 	}
 	
-	echo "\n" . '<!--Tweet Cloud by Stephen McIntyre of http://stephenmcintyre.net-->' . "\n";
+	echo "\n" . '<!--Tweet Cloud by Stephen McIntyre of http://stevedecoded.com-->' . "\n";
 	echo '<div class="sm-tweet-cloud">' . "\n";
 	
 	if( $username == NULL ){
